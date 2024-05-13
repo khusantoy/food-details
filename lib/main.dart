@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
 void main() {
@@ -6,7 +9,73 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  List<Map<String, dynamic>> foodsIcon = [
+    {
+      'icon': '🍔',
+      'isSelected': false,
+    },
+    {
+      'icon': '🍖',
+      'isSelected': false,
+    },
+    {
+      'icon': '🍟',
+      'isSelected': false,
+    },
+    {
+      'icon': '🍕',
+      'isSelected': false,
+    },
+    {
+      'icon': '🍗',
+      'isSelected': false,
+    },
+    {
+      'icon': '🥞',
+      'isSelected': false,
+    },
+    {
+      'icon': '🌭',
+      'isSelected': false,
+    },
+    {
+      'icon': '🥙',
+      'isSelected': false,
+    },
+    {
+      'icon': '🧆',
+      'isSelected': false,
+    },
+    {
+      'icon': '🌮',
+      'isSelected': false,
+    },
+    {
+      'icon': '🥗',
+      'isSelected': false,
+    },
+    {
+      'icon': '🥮',
+      'isSelected': false,
+    },
+    {
+      'icon': '🫖',
+      'isSelected': false,
+    },
+    {
+      'icon': '🥮',
+      'isSelected': false,
+    },
+    {
+      'icon': '☕️',
+      'isSelected': false,
+    },
+    {
+      'icon': '🍰',
+      'isSelected': false,
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -34,8 +103,8 @@ class MyApp extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.grey.withOpacity(0.7),
-                Colors.grey.withOpacity(0.7),
+                const Color.fromARGB(255, 124, 124, 124).withOpacity(0.7),
+                const Color.fromARGB(255, 124, 124, 124).withOpacity(0.7),
               ],
               stops: const [
                 0.1,
@@ -50,12 +119,13 @@ class MyApp extends StatelessWidget {
                 const Color((0xFFFFFFFF)).withOpacity(0.5),
               ],
             ),
-            child: const SafeArea(
+            child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -73,6 +143,46 @@ class MyApp extends StatelessWidget {
                           ),
                         )
                       ],
+                    ),
+                    const Text(
+                      "What do you want\nfor dinner",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (var food in foodsIcon)
+                            Row(
+                              children: [
+                                Chip(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(26),
+                                  ),
+                                  label: Text(
+                                    food['icon'],
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            )
+                        ],
+                      ),
                     )
                   ],
                 ),
