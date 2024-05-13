@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                const Color(0xFFffffff).withOpacity(0.1),
-                const Color(0xFFFFFFFF).withOpacity(0.05),
+                Colors.grey.withOpacity(0.7),
+                Colors.grey.withOpacity(0.7),
               ],
               stops: const [
                 0.1,
@@ -50,7 +50,34 @@ class MyApp extends StatelessWidget {
                 const Color((0xFFFFFFFF)).withOpacity(0.5),
               ],
             ),
-            child: null,
+            child: const SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Hi Zesan",
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 56,
+                          height: 56,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage("assets/images/avatar.jpg"),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
